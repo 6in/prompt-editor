@@ -57,10 +57,16 @@ const insertHeaderTableItem = (editor: BlockNoteEditor): DefaultReactSuggestionI
  * @param editor BlockNoteEditorのインスタンス
  * @returns DefaultReactSuggestionItem[]
  */
-const getCustomSlashMenuItems = (editor: BlockNoteEditor): DefaultReactSuggestionItem[] => [
-  ...getDefaultReactSlashMenuItems(editor),
-  insertHeaderTableItem(editor),
-];
+const getCustomSlashMenuItems = (editor: BlockNoteEditor): DefaultReactSuggestionItem[] => {
+  const defaultItems = getDefaultReactSlashMenuItems(editor);
+  const ignoreTitles = [ "Video", "Audio", "File", "Emoji"];
+  const newItems = defaultItems.filter((item) => !ignoreTitles.includes(item.title));
+
+  return [
+    ...newItems,
+    insertHeaderTableItem(editor),
+  ];
+}
 
 export default function BlockEditor(props: { onChange: any }) {
   // エディターインスタンスを作成
@@ -104,7 +110,7 @@ export default function BlockEditor(props: { onChange: any }) {
 
   return (
     <div style={{ height: "100%", width: "100%" }}>
-      <BlockNoteView editor={editor} onChange={onChange} theme="light" >
+      <BlockNoteView editor={editor} onChange={onChange} theme="light" slashMenu={false}>
         <SuggestionMenuController
           triggerCharacter="/"
           getItems={async (query) =>

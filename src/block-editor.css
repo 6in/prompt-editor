@@ -1,0 +1,12 @@
+/* ヘッダーのフォントサイズ調整 */
+.bn-container h1 {
+  font-size: 0.5em !important;  /* デフォルトは2em */
+}
+
+.bn-container h2 {
+  font-size: 0.6em !important;  /* デフォルトは1.5em */
+}
+
+.bn-container h3 {
+  font-size: 0.8em !important;  /* デフォルトは1.17em */
+}

@@ -5,7 +5,7 @@ import MonacoEditor from './monaco-editor'
 import { useState } from 'react'
 
 function App() {
-  const [markdown, setMarkdown] = useState<string>("ここにテキストを入力してください...");
+  const [markdown, setMarkdown] = useState<string>("");
   const [autoCopy, setAutoCopy] = useState<boolean>(true);
   
   const onChange = async ( e:string ) => {

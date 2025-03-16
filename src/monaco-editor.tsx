@@ -1,13 +1,18 @@
 import Editor from "@monaco-editor/react";
 
-export default function MonacoEditor() {
+interface EditorProps {
+  text: string;
+}
+
+export default function MonacoEditor({text}: EditorProps) {
+
   return (
     <div style={{ height: "100%", width: "100%" }}>
       <Editor
         height="100%"
         width="100%"
-        defaultLanguage="javascript"
-        defaultValue="// ここにコードを入力してください"
+        defaultLanguage="markdown"
+        value={text}
         theme="vs-dark"
         options={{
           minimap: { enabled: true },

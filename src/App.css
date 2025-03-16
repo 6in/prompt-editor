@@ -12,7 +12,7 @@
   max-width: 50%;
   padding: 0;
   margin: 0;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 /* エディタ間の境界線 */

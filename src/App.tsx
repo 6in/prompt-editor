@@ -1,5 +1,5 @@
 import './App.css'
-import BlockEditor from './block-editer'
+import BlockEditor from './block-editor'
 import MonacoEditor from './monaco-editor'
 
 function App() {

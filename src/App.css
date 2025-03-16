@@ -1,9 +1,22 @@
 .app-container {
   display: flex;
+  flex-direction: column;
   width: 100vw;
   height: 100vh;
   margin: 0;
   padding: 0;
+}
+
+.toolbar {
+  padding: 8px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.editors-container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
 }
 
 .editor-section {

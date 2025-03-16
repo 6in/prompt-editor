@@ -4,10 +4,14 @@ import MonacoEditor from './monaco-editor'
 
 function App() {
   return (
-    <>
-      <BlockEditor />
-      <MonacoEditor />
-    </>
+    <div className="app-container">
+      <div className="editor-section">
+        <BlockEditor />
+      </div>
+      <div className="editor-section">
+        <MonacoEditor />
+      </div>
+    </div>
   )
 }
 

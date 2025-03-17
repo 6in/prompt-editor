@@ -117,19 +117,19 @@ export default function BlockEditor(props: { onChange: any , shortCut: string}) 
       if (props.shortCut === "s-s" && event.shiftKey && event.key === ' ') {
         showMenu = true;
       }
-      if (props.shortCut === "c-s" && event.ctrlKey && event.key === ' ') {
+      else if (props.shortCut === "c-s" && event.ctrlKey && event.key === ' ') {
         showMenu = true;
       }
-      if (props.shortCut === "a-s" && event.altKey && event.key === ' ') {
+      else if (props.shortCut === "a-s" && event.altKey && event.key === ' ') {
         showMenu = true;
       }
-      if (props.shortCut === "m-s" && event.metaKey && event.key === ' ') {
+      else if (props.shortCut === "m-s" && event.metaKey && event.key === ' ') {
         showMenu = true;
       }
-      if (props.shortCut === "c-s-s" && event.ctrlKey && event.shiftKey && event.key === ' ') {
+      else if (props.shortCut === "c-s-s" && event.ctrlKey && event.shiftKey && event.key === ' ') {
         showMenu = true;
       }
-      if (props.shortCut === "m-s-s" && event.metaKey && event.shiftKey && event.key === ' ') {
+      else if (props.shortCut === "m-s-s" && event.metaKey && event.shiftKey && event.key === ' ') {
         showMenu = true;
       }
 

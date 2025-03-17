@@ -106,13 +106,17 @@ export default function BlockEditor(props: { onChange: any , shortCut: string}) 
       },
       {
         type: "bulletListItem",
+        content: "c-a-s: Ctrl + Alt + Space",
+      },
+      {
+        type: "bulletListItem",
         content: "m-s-s: Meta + Shift + Space",
       }
     ]
   });
 
   useEffect(() => {
-    const handleKeyDown = (event: any) => {
+    const handleKeyDown = (event: KeyboardEvent) => {
       let showMenu = false;
       if (props.shortCut === "s-s" && event.shiftKey && event.key === ' ') {
         showMenu = true;
@@ -127,6 +131,9 @@ export default function BlockEditor(props: { onChange: any , shortCut: string}) 
         showMenu = true;
       }
       else if (props.shortCut === "c-s-s" && event.ctrlKey && event.shiftKey && event.key === ' ') {
+        showMenu = true;
+      }
+      else if (props.shortCut === "c-a-s" && event.ctrlKey && event.altKey && event.key === ' ') {
         showMenu = true;
       }
       else if (props.shortCut === "m-s-s" && event.metaKey && event.shiftKey && event.key === ' ') {
@@ -144,7 +151,7 @@ export default function BlockEditor(props: { onChange: any , shortCut: string}) 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [editor]);
+  }, [editor, props.shortCut]);
 
   const onChange = async () => {
     // Converts the editor's contents from Block objects to Markdown and store to state.

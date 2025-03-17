@@ -20,7 +20,6 @@ function App() {
   const onChange = async ( e:string ) => {
     // Converts the editor's contents from Block objects to Markdown and store to state.
     const markdown = e;
-    console.log(markdown);
     setMarkdown(markdown);
     
     // If autoCopy is enabled, copy to clipboard

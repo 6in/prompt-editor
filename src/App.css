@@ -16,6 +16,7 @@
 .editors-container {
   display: flex;
   flex: 1;
+  background-color: #f8f9fa;
   overflow: hidden;
 }
 

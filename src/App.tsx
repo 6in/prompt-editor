@@ -2,11 +2,20 @@ import { MantineProvider, Checkbox } from '@mantine/core';
 import './App.css'
 import BlockEditor from './block-editor'
 import MonacoEditor from './monaco-editor'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 function App() {
   const [markdown, setMarkdown] = useState<string>("");
   const [autoCopy, setAutoCopy] = useState<boolean>(true);
+  const [shortCut, setShortCut] = useState<string>('s-s');
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const shortCutParam = params.get('shortCut');
+    if (shortCutParam) {
+      setShortCut(shortCutParam);
+    }
+  }, []);
   
   const onChange = async ( e:string ) => {
     // Converts the editor's contents from Block objects to Markdown and store to state.
@@ -32,7 +41,7 @@ function App() {
         </div>
         <div className="editors-container">
           <div className="editor-section">
-            <BlockEditor onChange={onChange} />
+            <BlockEditor onChange={onChange} shortCut={shortCut} />
           </div>
           <div className="editor-section">
             <MonacoEditor text={markdown}/>

@@ -18,14 +18,17 @@ function App() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const shortCutParam = params.get('shortCut');
-    if (shortCutParam) {
-      setShortCut(shortCutParam);
-    }
+
     const isWin = detectWindows();
+    setIsWindows(isWin);
     if (isWin) {
       setShortCut('c-s');
     }
-    setIsWindows(isWin);
+
+    if (shortCutParam) {
+      setShortCut(shortCutParam);
+    }
+
   }, []);
   
   const onChange = async (e: string) => {

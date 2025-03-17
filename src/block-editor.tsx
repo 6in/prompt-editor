@@ -68,11 +68,11 @@ const getCustomSlashMenuItems = (editor: BlockNoteEditor): DefaultReactSuggestio
   ];
 }
 
-export default function BlockEditor(props: { onChange: any }) {
+export default function BlockEditor(props: { onChange: any , shortCut: string}) {
   // エディターインスタンスを作成
   const editor = useCreateBlockNote({
     placeholders: {
-      paragraph: "/ あるいは Shift+Space でコマンドを入力"
+      paragraph: "/ あるいは ショートカット でコマンドを入力"
     },
     // テーブルのデフォルト設定
     tables: {
@@ -82,14 +82,58 @@ export default function BlockEditor(props: { onChange: any }) {
     initialContent: [
       {
         type: "paragraph",
-        content: ""
+        content: "起動時のurlパラメータ(?shortCut=XXX)で、メニューのショートカットを変更できます。"
+      },
+      {
+        type: "bulletListItem",
+        content: "s-s: Shift + Space (デフォルト) ",
+      },
+      {
+        type: "bulletListItem",
+        content: "c-s: Ctrl + Space",
+      },
+      {
+        type: "bulletListItem",
+        content: "a-s: Alt + Space",
+      },
+      {
+        type: "bulletListItem",
+        content: "m-s: Meta + Space",
+      },
+      {
+        type: "bulletListItem",
+        content: "c-s-s: Ctrl + Shift + Space",
+      },
+      {
+        type: "bulletListItem",
+        content: "m-s-s: Meta + Shift + Space",
       }
     ]
   });
 
   useEffect(() => {
     const handleKeyDown = (event: any) => {
-      if (event.shiftKey && event.key === ' ') {
+      let showMenu = false;
+      if (props.shortCut === "s-s" && event.shiftKey && event.key === ' ') {
+        showMenu = true;
+      }
+      if (props.shortCut === "c-s" && event.ctrlKey && event.key === ' ') {
+        showMenu = true;
+      }
+      if (props.shortCut === "a-s" && event.altKey && event.key === ' ') {
+        showMenu = true;
+      }
+      if (props.shortCut === "m-s" && event.metaKey && event.key === ' ') {
+        showMenu = true;
+      }
+      if (props.shortCut === "c-s-s" && event.ctrlKey && event.shiftKey && event.key === ' ') {
+        showMenu = true;
+      }
+      if (props.shortCut === "m-s-s" && event.metaKey && event.shiftKey && event.key === ' ') {
+        showMenu = true;
+      }
+
+      if (showMenu) {
         event.preventDefault();
         editor.openSuggestionMenu('/');
       }

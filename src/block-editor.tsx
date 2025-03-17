@@ -86,11 +86,11 @@ export default function BlockEditor(props: { onChange: any , shortCut: string}) 
       },
       {
         type: "bulletListItem",
-        content: "s-s: Shift + Space (デフォルト) ",
+        content: "s-s: Shift + Space (Windows以外の場合) ",
       },
       {
         type: "bulletListItem",
-        content: "c-s: Ctrl + Space",
+        content: "c-s: Ctrl + Space (Windowsの場合) ",
       },
       {
         type: "bulletListItem",
